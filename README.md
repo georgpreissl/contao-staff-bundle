@@ -1,6 +1,4 @@
-cd_collection
+Contao Staff Bundle
 =============
 
-This extension is a part of the "Create a custom module" tutorial at [qzminski Blog](http://blog.qzminski.com).
-
-The icon used in the project is made by [FamFamFam](http://famfamfam.com).# contao-staff-bundle
+Represent employees by departments in Contao CMS
