@@ -70,6 +70,23 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 				'icon'                => 'delete.gif',
 				'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
 			),
+            'toggle' => [
+                'label' => &$GLOBALS['TL_LANG']['tl_socialmedia_elements']['toggle'],
+                'attributes' => 'onclick="Backend.getScrollOffset();"',
+                'haste_ajax_operation' => [
+                    'field' => 'published',
+                    'options' => [
+                        [
+                            'value' => '',
+                            'icon' => 'invisible.svg',
+                        ],
+                        [
+                            'value' => '1',
+                            'icon' => 'visible.svg',
+                        ],
+                    ],
+                ],
+            ],
 			'show' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_staff_employee']['show'],
@@ -84,7 +101,8 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 	(
 		'default'                     => '{title_legend},forename,surname,name_prefix,name_appendix,position;'.
 													'{photo_legend},photo,infos;'.
-													'{data_legend},year_of_birth;'
+													'{data_legend},year_of_birth;'.
+													'{publish_legend},published;'
 	),
 
 	// Fields
@@ -171,7 +189,17 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(8) NOT NULL default ''"
-		)
+		),
+		'published' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_calendar_events']['published'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'flag'                    => 2,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('doNotCopy'=>true),
+			'sql'                     => "char(1) NOT NULL default ''"
+		)		
 	)
 );
 
@@ -191,4 +219,161 @@ class tl_staff_employee extends Backend
 	{
 		return '<div>' . $arrRow['forename'] . " " . $arrRow['surname'] . ' <span style="padding-left:3px;color:#b3b3b3;">[' . $arrRow['position'] . ']</span></div>';
 	}
+
+
+
+	/**
+	 * Return the "toggle visibility" button
+	 *
+	 * @param array  $row
+	 * @param string $href
+	 * @param string $label
+	 * @param string $title
+	 * @param string $icon
+	 * @param string $attributes
+	 *
+	 * @return string
+	 */
+	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
+	{
+		if (\strlen(Input::get('tid')))
+		{
+			$this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+			$this->redirect($this->getReferer());
+		}
+
+		// Check permissions AFTER checking the tid, so hacking attempts are logged
+		if (!$this->User->hasAccess('tl_staff_employee::published', 'alexf'))
+		{
+			return '';
+		}
+
+		$href .= '&amp;tid='.$row['id'].'&amp;state='.($row['published'] ? '' : 1);
+
+		if (!$row['published'])
+		{
+			$icon = 'invisible.svg';
+		}
+
+		return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+	}
+
+	/**
+	 * Disable/enable a user group
+	 *
+	 * @param integer       $intId
+	 * @param boolean       $blnVisible
+	 * @param DataContainer $dc
+	 *
+	 * @throws Contao\CoreBundle\Exception\AccessDeniedException
+	 */
+	public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
+	{
+		// Set the ID and action
+		Input::setGet('id', $intId);
+		Input::setGet('act', 'toggle');
+
+		if ($dc)
+		{
+			$dc->id = $intId; // see #8043
+		}
+
+		// Trigger the onload_callback
+		if (\is_array($GLOBALS['TL_DCA']['tl_staff_employee']['config']['onload_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA']['tl_staff_employee']['config']['onload_callback'] as $callback)
+			{
+				if (\is_array($callback))
+				{
+					$this->import($callback[0]);
+					$this->{$callback[0]}->{$callback[1]}($dc);
+				}
+				elseif (\is_callable($callback))
+				{
+					$callback($dc);
+				}
+			}
+		}
+
+		// Check the field access
+		if (!$this->User->hasAccess('tl_staff_employee::published', 'alexf'))
+		{
+			throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to publish/unpublish event ID ' . $intId . '.');
+		}
+
+		// Set the current record
+		if ($dc)
+		{
+			$objRow = $this->Database->prepare("SELECT * FROM tl_staff_employee WHERE id=?")
+									 ->limit(1)
+									 ->execute($intId);
+
+			if ($objRow->numRows)
+			{
+				$dc->activeRecord = $objRow;
+			}
+		}
+
+		$objVersions = new Versions('tl_staff_employee', $intId);
+		$objVersions->initialize();
+
+		// Trigger the save_callback
+		if (\is_array($GLOBALS['TL_DCA']['tl_staff_employee']['fields']['published']['save_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA']['tl_staff_employee']['fields']['published']['save_callback'] as $callback)
+			{
+				if (\is_array($callback))
+				{
+					$this->import($callback[0]);
+					$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
+				}
+				elseif (\is_callable($callback))
+				{
+					$blnVisible = $callback($blnVisible, $dc);
+				}
+			}
+		}
+
+		$time = time();
+
+		// Update the database
+		$this->Database->prepare("UPDATE tl_staff_employee SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
+					   ->execute($intId);
+
+		if ($dc)
+		{
+			$dc->activeRecord->tstamp = $time;
+			$dc->activeRecord->published = ($blnVisible ? '1' : '');
+		}
+
+		// Trigger the onsubmit_callback
+		if (\is_array($GLOBALS['TL_DCA']['tl_staff_employee']['config']['onsubmit_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA']['tl_staff_employee']['config']['onsubmit_callback'] as $callback)
+			{
+				if (\is_array($callback))
+				{
+					$this->import($callback[0]);
+					$this->{$callback[0]}->{$callback[1]}($dc);
+				}
+				elseif (\is_callable($callback))
+				{
+					$callback($dc);
+				}
+			}
+		}
+
+		$objVersions->create();
+
+		// The onsubmit_callback has triggered scheduleUpdate(), so run generateFeed() now
+		$this->generateFeed();
+	}
+
+
+
+
+
+
+
+
 }

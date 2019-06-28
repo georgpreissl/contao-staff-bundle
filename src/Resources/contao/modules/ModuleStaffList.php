@@ -39,6 +39,15 @@ class ModuleStaffList extends \Module
 			return $objTemplate->parse();
 		}
 
+		$this->staff_archives = \StringUtil::deserialize($this->staff_archives);
+
+		// Return if there are no archives
+		if (empty($this->staff_archives) || !\is_array($this->staff_archives))
+		{
+			return '';
+		}
+
+
 		return parent::generate();
 	}
 
@@ -48,7 +57,18 @@ class ModuleStaffList extends \Module
 	 */
 	protected function compile()
 	{
-		$objDivisions = \StaffDivisionModel::findAll();
+
+
+
+
+
+
+
+		// printf('<pre>%s</pre>', print_r($this->staff_archives,true));
+		// $objDivisions = StaffDivisionModel::findAll();
+		$objDivisions = StaffDivisionModel::findPublishedByIds($this->staff_archives);
+// var_dump($objDivisions);
+		// printf('<pre>%s</pre>', print_r($objDivisions,true));
 
 		// Return if no divisions were found
 		if ($objDivisions === null)
@@ -64,8 +84,10 @@ class ModuleStaffList extends \Module
 		{
 
 
+// var_dump($objDivisions->id);
 
-        $objEmployees = \StaffEmployeeModel::findByParent($objDivisions->id);
+        	$objEmployees = StaffEmployeeModel::findByParent($objDivisions->id);
+        	// $objEmployees = \ContentModel::findPublishedByPidAndTable($objDivisions->id,'tl_staff_employee');
 
 			// Return if there are no Employees
 			if ($objEmployees === null)
@@ -132,6 +154,10 @@ class ModuleStaffList extends \Module
 			);
 			// printf('<pre>%s</pre>', print_r($arrDivisions,true));
 		}
+
+
+// printf('<pre>%s</pre>', print_r($arrDivisions,true));
+// var_dump($arrDivisions);
 
 		$this->Template->divisions = $arrDivisions;
 	}

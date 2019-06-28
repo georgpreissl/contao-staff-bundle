@@ -3,8 +3,8 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_staff_employee']['forename']    = array('Forename', 'Please enter the employee forename.');
-$GLOBALS['TL_LANG']['tl_staff_employee']['surname'] = array('Surname', 'Please enter the employee surname.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['forename']    = array('Vorname', 'Please enter the employee forename.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['surname'] = array('Nachname', 'Please enter the employee surname.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['name_prefix'] = array('Prefix', 'Here you can enter the employee-name prefix.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['name_appendix'] = array('Appendix', 'Here you can enter the employee-name appendix.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['position'] = array('Position', 'Here you can enter the employees position.');
@@ -23,7 +23,7 @@ $GLOBALS['TL_LANG']['tl_staff_employee']['photo_legend'] = 'Photo';
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_staff_employee']['new']        = array('New employee', 'Add a new employee');
+$GLOBALS['TL_LANG']['tl_staff_employee']['new']        = array('Neuer Mitarbeiter', 'Add a new employee');
 $GLOBALS['TL_LANG']['tl_staff_employee']['show']       = array('employee details', 'Show the details of employee ID %s');
 $GLOBALS['TL_LANG']['tl_staff_employee']['edit']       = array('Edit employee', 'Edit employee ID %s');
 $GLOBALS['TL_LANG']['tl_staff_employee']['copy']       = array('Copy employee', 'Copy employee ID %s');

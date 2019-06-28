@@ -29,10 +29,47 @@ class StaffEmployeeModel extends Model
     {
         $t = static::$strTable;
 
-        $arrColumns = array("$t.pid=?");
+        $arrColumns = array("$t.pid=? AND $t.published='1'");
+
+
+
+
+
         $arrValues = array($intPid);
         $arrOptions['order'] = "$t.sorting";
 
         return static::findBy($arrColumns, $arrValues, $arrOptions);
     }
+
+
+
+
+
+
+	public static function findPublishedByPids($arrPids, array $arrOptions=array())
+	{
+		if (empty($arrPids) || !\is_array($arrPids))
+		{
+			return null;
+		}
+
+		$t = static::$strTable;
+		$arrColumns = array("$t.pid IN(" . implode(',', array_map('\intval', $arrPids)) . ")");
+
+
+
+
+
+		return static::findBy($arrColumns, null, $arrOptions);
+	}
+
+
+
+
+
+
+
+
+
+
 }
