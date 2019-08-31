@@ -1,4 +1,4 @@
 Contao Staff Bundle
 =============
 
-Represent employees by departments in Contao CMS
+Represent employees by departments in Contao CMS.
