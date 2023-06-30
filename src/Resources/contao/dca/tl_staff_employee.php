@@ -239,7 +239,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'start' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_content']['start'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['start'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),

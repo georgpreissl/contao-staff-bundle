@@ -9,7 +9,7 @@ namespace GeorgPreissl\Staff;
  *
  * Front end module "staff reader".
  */
-class ModuleStaffReader extends ModuleStaff
+class ModuleStaffReader extends \Module
 {
 
 	/**
@@ -87,7 +87,7 @@ class ModuleStaffReader extends ModuleStaff
 
 		if ($objEmployee === null)
 		{
-			throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));
+			// throw new \PageNotFoundException('Page not found: ' . \Environment::get('uri'));
 		}
 
 		// Set the default template
@@ -95,43 +95,12 @@ class ModuleStaffReader extends ModuleStaff
 		{
 			$this->staff_template = 'staff_full';
 		}
-
-		$arrEmployee = $this->parseEmployee($objEmployee);
+		$objStaff = new Staff();
+		$objStaff->staff_template = $this->staff_template;
+		$objStaff->imgSize = $this->imgSize;
+		$arrEmployee = $objStaff->parseEmployee($objEmployee);
 		$this->Template->employees = $arrEmployee;
 
 
-	/*
-		// printf('<pre>%s</pre>', print_r(\Input::get('items'),true));
-	    $objEmployee = StaffEmployeeModel::findByPk(\Input::get('items'));
-	    // printf('<pre>%s</pre>', print_r($objEmployee->id,true));
-	    $objDivision = StaffDivisionModel::findByPk($objEmployee->pid);
-
-
-		// Display a 404 page if the CD was not found
-		if ($objEmployee === null)
-		{
-			global $objPage;
-			$objHandler = new $GLOBALS['TL_PTY']['error_404']();
-			$objHandler->generate($objPage->id);
-		}
-		$objPhoto = \FilesModel::findByPk($objEmployee->photo);
-
-		// Add photo 
-		if ($objPhoto !== null)
-		{
-			$this->Template->photo = \Image::getHtml(\Image::get($objPhoto->path, '100', '100', 'center_center'));
-		}
-		$this->Template->name = $objEmployee->name_prefix . $objEmployee->forename . " " . $objEmployee->surname . $objEmployee->name_appendix;
-		$this->Template->forename = $objEmployee->forename;
-		$this->Template->surname = $objEmployee->surname;
-		$this->Template->position = $objEmployee->position;
-		$this->Template->division = $objDivision->title;
-		$this->Template->year_of_birth = $objEmployee->year_of_birth;
-
- 
-		$this->Template->year_of_birthLabel = $GLOBALS['TL_LANG']['MSC']['year_of_birth'];
-		$this->Template->divisionLabel = $GLOBALS['TL_LANG']['MSC']['division'];
-		$this->Template->durationLabel = $GLOBALS['TL_LANG']['MSC']['song_duration'];
-		*/
 	}
 }

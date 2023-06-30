@@ -25,3 +25,6 @@ $GLOBALS['FE_MOD']['miscellaneous']['staff_reader'] = 'GeorgPreissl\Staff\Module
  */
 $GLOBALS['TL_MODELS']['tl_staff_division']      = 'GeorgPreissl\Staff\StaffDivisionModel';
 $GLOBALS['TL_MODELS']['tl_staff_employee'] = 'GeorgPreissl\Staff\StaffEmployeeModel';
+
+
+$GLOBALS['TL_CTE']['includes']['staff'] = 'GeorgPreissl\Staff\ElementStaff';

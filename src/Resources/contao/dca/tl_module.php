@@ -12,7 +12,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['staff_reader'] = '{title_legend},na
 // Add fields to tl_module
 $GLOBALS['TL_DCA']['tl_module']['fields']['staff_archives'] = array
 (
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['news_archives'],
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['staff_archives'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
 	'options_callback'        => array('tl_module_stafflist', 'getStaffArchives'),
