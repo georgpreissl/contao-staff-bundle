@@ -1,0 +1,41 @@
+{
+    "name": "georgpreissl/contao-staff-bundle",
+	"homepage":"https://github.com/georgpreissl/contao-staff-bundle",        
+    "description": "Contao bundle to show employees in the frontend.",
+    "keywords": ["staff", "employees", "team", "georgpreissl", "bundle", "module", "contao"],
+    "type": "contao-bundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Georg Preissl",
+            "homepage": "https://github.com/georgpreissl",
+            "role":"Developer"                        
+        }
+    ],
+    "support":{
+        "website":"https://www.georg-preissl.at",
+        "issues":"https://github.com/georgpreissl/contao-staff-bundle/issues",
+        "source":"https://github.com/georgpreissl/contao-staff-bundle"
+    },
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "contao/core-bundle": "~4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "GeorgPreissl\\Staff\\": "src/"
+        },
+        "classmap": [
+            "src/Resources/contao/"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
+    },
+    "extra": {
+        "contao-manager-plugin": "GeorgPreissl\\Staff\\ContaoManager\\Plugin"
+    }
+}

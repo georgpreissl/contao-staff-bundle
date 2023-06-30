@@ -1,0 +1,19 @@
+
+<div  class="staff_simple block<?= $this->class ?>">
+	
+	<h2 class="staff_simple__name"><?= $this->forename ?> <?= $this->surname ?></h2>
+	<?php if ($this->position): ?>
+		<p class="staff_full__position" ><?= $this->position ?></p>
+	<?php endif; ?>	
+	<?php if($this->link): ?>
+		<a href="<?= $this->link ?>" >Mehr zur Person</a>
+	<?php endif; ?>
+</div>
+
+<?php
+
+// This template is used as a news list template by default, so we only add
+// JSON-LD data in case this is a news article without a reader
+if (!$this->hasReader) {
+    // $this->addSchemaOrg($this->getSchemaOrgData());
+}

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_staff_employee']['forename']    = array('Vorname', 'Please enter the employee forename.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['surname'] = array('Nachname', 'Please enter the employee surname.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['name_prefix'] = array('Prefix', 'Here you can enter the employee-name prefix.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['name_appendix'] = array('Appendix', 'Here you can enter the employee-name appendix.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['position'] = array('Position', 'Here you can enter the employees position.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['photo']       = array('Photo', 'Here you can choose an image of the employee.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['infos']       = array('Infos', 'Here you can enter further information about the employee.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['year_of_birth']       = array('Geburtsdatum', 'Hier können Sie das Geburtsdatum der Person eingeben.');
+
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_staff_employee']['title_legend'] = 'Name and position';
+$GLOBALS['TL_LANG']['tl_staff_employee']['photo_legend'] = 'Photo';
+$GLOBALS['TL_LANG']['tl_staff_employee']['data_legend'] = 'Daten';
+
+
+/**
+ * Buttons
+ */
+$GLOBALS['TL_LANG']['tl_staff_employee']['new']        = array('Neuer Mitarbeiter', 'Add a new employee');
+$GLOBALS['TL_LANG']['tl_staff_employee']['show']       = array('employee details', 'Show the details of employee ID %s');
+$GLOBALS['TL_LANG']['tl_staff_employee']['edit']       = array('Edit employee', 'Edit employee ID %s');
+$GLOBALS['TL_LANG']['tl_staff_employee']['copy']       = array('Copy employee', 'Copy employee ID %s');
+$GLOBALS['TL_LANG']['tl_staff_employee']['cut']        = array('Move employee', 'Move employee ID %s');
+$GLOBALS['TL_LANG']['tl_staff_employee']['delete']     = array('Delete employee', 'Delete employee ID %s');
+$GLOBALS['TL_LANG']['tl_staff_employee']['pasteafter'] = array('Paste into this album', 'Paste after employee ID %s');
+$GLOBALS['TL_LANG']['tl_staff_employee']['pastenew']   = array('Add new at the top', 'Add new after question ID %s');

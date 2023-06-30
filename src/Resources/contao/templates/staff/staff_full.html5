@@ -1,0 +1,24 @@
+
+<div class="staff_full block<?= $this->class ?>">
+
+	<h1 class="staff_full__name" ><?= $this->name_prefix ?> <?= $this->forename ?> <?= $this->surname ?><?= $this->name_appendix ?></h1>
+
+	<?php if ($this->position): ?>
+		<p class="staff_full__position" ><?= $this->position ?></p>
+	<?php endif; ?>
+
+	<?php if ($this->infos): ?>
+		<div class="staff_full__infos" ><?= $this->infos ?></div>
+	<?php endif; ?>
+
+</div>
+
+<?php
+
+// $schemaOrg = $this->getSchemaOrgData();
+
+// if ($this->hasText) {
+//     $schemaOrg['text'] = $this->rawHtmlToPlainText($this->text);
+// }
+
+// $this->addSchemaOrg($schemaOrg);
