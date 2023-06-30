@@ -13,3 +13,6 @@ $GLOBALS['TL_LANG']['FMD']['staff_list']   = array('Mitarbeiterliste', 'Adds a l
 $GLOBALS['TL_LANG']['FMD']['staff_reader'] = array('Mitarbeiterleser', 'Adds a employee reader to the website.');
 
 
+$GLOBALS['TL_LANG']['tl_module']['staff_template'] = array('Mitarbeiter-Template', 'Hier können Sie ein Mitarbeiter-Template auswählen.');
+
+

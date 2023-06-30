@@ -1,4 +1,4 @@
-<?php $this->showTemplateVars() ?>
+<?php //$this->showTemplateVars() ?>
 
 <div  class="staff_simple block<?= $this->class ?>">
 	
@@ -6,12 +6,25 @@
 		<?php $this->insert('image', $this->arrData); ?>
 	<?php endif; ?>
 	
-	<h2 class="staff_simple__name"><?= $this->forename ?> <?= $this->surname ?></h2>
+	<h2 class="staff_simple__name"><?= $this->name_prefix ?> <?= $this->forename ?> <?= $this->surname ?><?= $this->name_appendix ?></h2>
 
 	<?php if ($this->position): ?>
-		<p class="staff_full__position" ><?= $this->position ?></p>
+		<p class="staff_simple__position" ><?= $this->position ?></p>
 	<?php endif; ?>	
 
+	<div class="staff_simple__contact">
+		<?php if ($this->phone): ?>
+			<a class="staff_simple__phone" href="tel:<?= $this->phone ?>" ><?= $this->phone ?></a>
+		<?php endif; ?>	
+
+		<?php if ($this->mobile): ?>
+			<a class="staff_simple__mobile" href="tel:<?= $this->mobile ?>" ><?= $this->mobile ?></a>
+		<?php endif; ?>	
+
+		<?php if ($this->email): ?>
+			<a class="staff_simple__mobile" href="mailto:{{email_url::<?= $this->email ?>}}" ><?= $this->email ?></a>
+		<?php endif; ?>	
+	</div>
 
 	<?php if($this->link): ?>
 		<a href="<?= $this->link ?>" >Mehr zur Person</a>

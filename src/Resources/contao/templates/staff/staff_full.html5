@@ -1,6 +1,10 @@
 
 <div class="staff_full block<?= $this->class ?>">
 
+	<?php if ($this->singleSRC): ?>
+		<?php $this->insert('image', $this->arrData); ?>
+	<?php endif; ?>
+
 	<h1 class="staff_full__name" ><?= $this->name_prefix ?> <?= $this->forename ?> <?= $this->surname ?><?= $this->name_appendix ?></h1>
 
 	<?php if ($this->position): ?>
@@ -10,6 +14,22 @@
 	<?php if ($this->infos): ?>
 		<div class="staff_full__infos" ><?= $this->infos ?></div>
 	<?php endif; ?>
+
+
+	<div class="staff_full__contact">
+		<?php if ($this->phone): ?>
+			<a class="staff_full__phone" href="tel:<?= $this->phone ?>" ><?= $this->phone ?></a>
+		<?php endif; ?>	
+
+		<?php if ($this->mobile): ?>
+			<a class="staff_full__mobile" href="tel:<?= $this->mobile ?>" ><?= $this->mobile ?></a>
+		<?php endif; ?>	
+
+		<?php if ($this->email): ?>
+			<a class="staff_full__mobile" href="mailto:{{email_url::<?= $this->email ?>}}" ><?= $this->email ?></a>
+		<?php endif; ?>	
+	</div>
+
 
 </div>
 

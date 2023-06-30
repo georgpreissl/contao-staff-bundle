@@ -4,7 +4,7 @@
  * Add palettes to tl_module
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['staff_list']   = '{title_legend},name,headline,type;{config_legend},staff_archives;{redirect_legend},jumpTo;{protected_legend:hide},protected;{template_legend:hide},staff_template,customTpl;{image_legend:hide},imgSize;{expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['staff_reader'] = '{title_legend},name,headline,type;{config_legend},staff_archives,overviewPage,customLabel;{protected_legend:hide},protected;{template_legend:hide},staff_template,customTpl;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['staff_reader'] = '{title_legend},name,headline,type;{config_legend},staff_archives,overviewPage,customLabel;{protected_legend:hide},protected;{template_legend:hide},staff_template,customTpl;{image_legend:hide},imgSize;{expert_legend:hide},guests,cssID,space';
 
 // $GLOBALS['TL_DCA']['tl_module']['palettes']['newsreader']   = '{title_legend},name,headline,type;{config_legend},news_archives,overviewPage,customLabel;{template_legend:hide},news_metaFields,news_template,customTpl;{image_legend:hide},imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 
@@ -22,6 +22,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['staff_archives'] = array
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['staff_template'] = array
 (
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['staff_template'],
 	'exclude'                 => true,
 	'inputType'               => 'select',
 	'options_callback' => static function ()
