@@ -95,7 +95,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 	'palettes' => array
 	(
 		'default'                     => '{title_legend},forename,surname,alias,name_prefix,name_appendix,position;'.
-													'{photo_legend},photo,infos;'.
+													'{photo_legend},singleSRC,infos;'.
 													'{data_legend},year_of_birth;'.
 													'{publish_legend},published,start,stop;'
 	),
@@ -173,13 +173,13 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
-		'photo' => array
+		'singleSRC' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['photo'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['singleSRC'],
 			'exclude'                 => true,
 			'inputType'               => 'fileTree',
-			'eval'                    => array('fieldType'=>'radio', 'files'=>true, 'filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes']),
-			'sql'                     => "binary(16) NULL",
+			'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>'%contao.image.valid_extensions%'),
+			'sql'                     => "binary(16) NULL"
 		),
 		'infos' => array
 		(

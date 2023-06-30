@@ -8,7 +8,7 @@ $GLOBALS['TL_LANG']['tl_staff_employee']['surname'] = array('Nachname', 'Please 
 $GLOBALS['TL_LANG']['tl_staff_employee']['name_prefix'] = array('Prefix', 'Here you can enter the employee-name prefix.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['name_appendix'] = array('Appendix', 'Here you can enter the employee-name appendix.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['position'] = array('Position', 'Here you can enter the employees position.');
-$GLOBALS['TL_LANG']['tl_staff_employee']['photo']       = array('Photo', 'Here you can choose an image of the employee.');
+$GLOBALS['TL_LANG']['tl_staff_employee']['singleSRC']       = array('Photo', 'Hier können Sie ein Foto des Mitarbeiters einfügen.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['infos']       = array('Infos', 'Here you can enter further information about the employee.');
 $GLOBALS['TL_LANG']['tl_staff_employee']['year_of_birth']       = array('Geburtsdatum', 'Hier können Sie das Geburtsdatum der Person eingeben.');
 

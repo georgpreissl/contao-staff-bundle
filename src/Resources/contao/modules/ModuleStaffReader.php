@@ -71,7 +71,7 @@ class ModuleStaffReader extends ModuleStaff
 		if ($this->overviewPage)
 		{
 			$this->Template->referer = \PageModel::findById($this->overviewPage)->getFrontendUrl();
-			$this->Template->back = $this->customLabel ?: $GLOBALS['TL_LANG']['MSC']['staffOverview'];
+			$this->Template->back = $this->customLabel ?: ($GLOBALS['TL_LANG']['MSC']['staffOverview'] ?? null);
 		}
 		else
 		{
@@ -82,10 +82,9 @@ class ModuleStaffReader extends ModuleStaff
 		}
 
 
-		// Get the staff item
+		// Get the employee
 		$objEmployee = StaffEmployeeModel::findPublishedByParentAndIdOrAlias(\Input::get('items'), $this->staff_archives);
 
-		// The news item does not exist (see #33)
 		if ($objEmployee === null)
 		{
 			throw new PageNotFoundException('Page not found: ' . Environment::get('uri'));

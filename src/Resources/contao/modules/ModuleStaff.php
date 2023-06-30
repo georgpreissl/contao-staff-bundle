@@ -37,6 +37,23 @@ abstract class ModuleStaff extends \Module
 			$objTemplate->link = \StringUtil::ampersand($objPage->getFrontendUrl($params));
 		
 		}
+
+
+
+		$figureBuilder = \System::getContainer()
+		->get('contao.image.studio')
+		->createFigureBuilder()
+		->from($objEmployee->singleSRC)
+		->setSize($this->imgSize);
+
+		if (null !== ($figure = $figureBuilder->buildIfResourceExists()))
+		{
+
+
+			$figure->applyLegacyTemplateData($objTemplate, $objEmployee->imagemargin, $objEmployee->floating);
+		}		
+
+
 		// dump($this->jumpTo);
 
 				// if (($objTarget = $objEmployee->getRelated('jumpTo')) instanceof \PageModel)
