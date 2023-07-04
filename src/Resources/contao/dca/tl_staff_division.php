@@ -33,8 +33,8 @@ $GLOBALS['TL_DCA']['tl_staff_division'] = array
 		),
 		'label' => array
 		(
-			'fields'                  => array('title', 'artist'),
-			'format'                  => '%s <span style="color:#b3b3b3;padding-left:3px;">[%s]</span>'
+			'fields'                  => array('title'),
+			// 'format'                  => '%s <span style="color:#b3b3b3;padding-left:3px;">[%s]</span>'
 		),
 		'global_operations' => array
 		(

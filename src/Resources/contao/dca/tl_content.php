@@ -13,8 +13,9 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['staff'] = '{type_legend},type,head
 
 
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['staff_employee'] =  array(
-    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['staff_emloyee'],
+$GLOBALS['TL_DCA']['tl_content']['fields']['staff_employee'] = array
+(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['staff_employee'],
     'exclude'                 => true,
     'search'                  => true,
     'inputType'               => 'select',
@@ -51,31 +52,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['staff_template'] = array
 
 class tl_content_staff extends Backend
 {
-    /**
-     * Import the back end user object
-     */
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->import('BackendUser', 'User');
-    }
-
 
 
     public function getEmployees()
     {
-        /*if (!$this->User->isAdmin)
-        {
-            return array();
-        }
-        */
         $arrEmployees = array();
-        $objEmployees = $this->Database->execute("SELECT id, surname FROM tl_staff_employee ORDER BY surname");
+        $objEmployees = $this->Database->execute("SELECT id, forename, surname FROM tl_staff_employee ORDER BY surname");
 
         while ($objEmployees->next()) {
             {
-                $arrEmployees[$objEmployees->id] = $objEmployees->surname;
+                $arrEmployees[$objEmployees->id] = $objEmployees->forename . ' ' . $objEmployees->surname;
             }
         }
         return $arrEmployees;

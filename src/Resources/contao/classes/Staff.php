@@ -26,11 +26,11 @@ class Staff
 		$objTemplate = new \FrontendTemplate($this->staff_template ?: 'staff_simple');
 		$objTemplate->setData($objEmployee->row());
 
-		if(isset($this->jumpTo)){
+		if(isset($this->jumpTo))
+		{
 			$objPage = \PageModel::findByPk($this->jumpTo);
-			$params = (\Config::get('useAutoItem') ? '/' : '/items/') . ($objEmployee->alias ?: $objEmployee->id);
-			$objTemplate->link = \StringUtil::ampersand($objPage->getFrontendUrl($params));
-		
+			$strParams = (\Config::get('useAutoItem') ? '/' : '/items/') . ($objEmployee->alias ?: $objEmployee->id);
+			$objTemplate->link = \StringUtil::ampersand($objPage->getFrontendUrl($strParams));
 		}
 
 		$figureBuilder = \System::getContainer()

@@ -1,3 +1,4 @@
+<?php //$this->showTemplateVars(); ?>
 <?php $this->extend('block_unsearchable'); ?>
 
 <?php $this->block('content'); ?>
@@ -5,6 +6,7 @@
   <?php if (empty($this->employees)): ?>
     <p class="empty"><?= $this->empty ?></p>
   <?php else: ?>
+    <?= $this->description ?>
     <?= implode('', $this->employees) ?>
     <?= $this->pagination ?>
   <?php endif; ?>

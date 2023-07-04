@@ -56,8 +56,10 @@ class ModuleStaffList extends \Module
 	 */
 	protected function compile()
 	{
-
+// dump($this->staff_archives);
 		$objEmployees = StaffEmployeeModel::findPublishedByPids($this->staff_archives);
+
+
 
 		if ($objEmployees !== null)
 		{
@@ -65,6 +67,7 @@ class ModuleStaffList extends \Module
 			$objStaff->staff_template = $this->staff_template;
 			$objStaff->imgSize = $this->imgSize;
 			$objStaff->jumpTo = $this->jumpTo;
+			$this->Template->description = $this->description;
 			$this->Template->employees = $objStaff->parseEmployees($objEmployees);
 		}
 
