@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Table tl_staff_division
+ * Table tl_staff_archive
  */
-$GLOBALS['TL_DCA']['tl_staff_division'] = array
+$GLOBALS['TL_DCA']['tl_staff_archive'] = array
 (
 
 	// Config
@@ -50,32 +50,32 @@ $GLOBALS['TL_DCA']['tl_staff_division'] = array
 		(
 			'edit' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_division']['edit'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['edit'],
 				'href'                => 'table=tl_staff_employee',
 				'icon'                => 'edit.gif'
 			),
 			'editheader' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_division']['editheader'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['editheader'],
 				'href'                => 'act=edit',
 				'icon'                => 'header.gif'
 			),
 			'copy' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_division']['copy'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['copy'],
 				'href'                => 'act=copy',
 				'icon'                => 'copy.gif'
 			),
 			'delete' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_division']['delete'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.gif',
 				'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
 			),
 			'show' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_division']['show'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['show'],
 				'href'                => 'act=show',
 				'icon'                => 'show.gif'
 			)
@@ -85,8 +85,17 @@ $GLOBALS['TL_DCA']['tl_staff_division'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},title,description'
+		'__selector__'                => array('protected'),
+		'default'                     => '{title_legend},title;{protected_legend:hide},protected;'
 	),
+
+	// Subpalettes
+	'subpalettes' => array
+	(
+		'protected'                   => 'memberGroups'
+	),
+
+
 
 	// Fields
 	'fields' => array
@@ -101,22 +110,30 @@ $GLOBALS['TL_DCA']['tl_staff_division'] = array
 		),
 		'title' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_division']['title'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_archive']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w100'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
-		'description' => array
+		'protected' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_division']['description'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_archive']['protected'],
 			'exclude'                 => true,
-			'search'                  => true,
-			'inputType'               => 'textarea',
-			'eval'                    => array('rte'=>'tinyMCE'),
-			'sql'                     => "text NULL"
+			'filter'                  => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('submitOnChange'=>true),
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
-
+		'memberGroups' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'foreignKey'              => 'tl_member_group.name',
+			'eval'                    => array('mandatory'=>true, 'multiple'=>true),
+			'sql'                     => "blob NULL",
+			'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
+		)
 	)
 );

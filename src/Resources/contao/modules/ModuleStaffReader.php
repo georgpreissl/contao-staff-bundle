@@ -9,7 +9,7 @@ namespace GeorgPreissl\Staff;
  *
  * Front end module "staff reader".
  */
-class ModuleStaffReader extends \Module
+class ModuleStaffReader extends ModuleStaff
 {
 
 	/**
@@ -84,7 +84,7 @@ class ModuleStaffReader extends \Module
 
 		// Get the employee
 		$objEmployee = StaffEmployeeModel::findPublishedByParentAndIdOrAlias(\Input::get('items'), $this->staff_archives);
-
+// dump($objEmployee);
 		if ($objEmployee === null)
 		{
 			// throw new \PageNotFoundException('Page not found: ' . \Environment::get('uri'));
@@ -95,10 +95,10 @@ class ModuleStaffReader extends \Module
 		{
 			$this->staff_template = 'staff_full';
 		}
-		$objStaff = new Staff();
-		$objStaff->staff_template = $this->staff_template;
-		$objStaff->imgSize = $this->imgSize;
-		$arrEmployee = $objStaff->parseEmployee($objEmployee);
+		// $objStaff = new Staff();
+		// $objStaff->staff_template = $this->staff_template;
+		// $objStaff->imgSize = $this->imgSize;
+		$arrEmployee = $this->parseEmployee($objEmployee);
 		$this->Template->employees = $arrEmployee;
 
 

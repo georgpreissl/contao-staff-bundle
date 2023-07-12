@@ -4,32 +4,21 @@ namespace GeorgPreissl\Staff;
 
 
 
-/**
- * Class ModuleCdList
- *
- * Front end module "cd list".
- */
-class ModuleStaffList extends \Module
+
+class ModuleStaffList extends ModuleStaff
 {
 
-	/**
-	 * Template
-	 * @var string
-	 */
+
 	protected $strTemplate = 'mod_stafflist';
 
 
-	/**
-	 * Display a wildcard in the back end
-	 * @return string
-	 */
 	public function generate()
 	{
 		if (TL_MODE == 'BE')
 		{
 			$objTemplate = new \BackendTemplate('be_wildcard');
 
-			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['staff_list'][0]) . ' ###';
+			$objTemplate->wildcard = '### ' . utf8_strtoupper($GLOBALS['TL_LANG']['FMD']['stafflist'][0]) . ' ###';
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
 			$objTemplate->link = $this->name;
@@ -37,8 +26,11 @@ class ModuleStaffList extends \Module
 
 			return $objTemplate->parse();
 		}
-
-		$this->staff_archives = \StringUtil::deserialize($this->staff_archives);
+		// $objStaff = new Staff();
+		$this->staff_archives = $this->sortOutProtected(\StringUtil::deserialize($this->staff_archives));
+		$this->staff_departments = \StringUtil::deserialize($this->staff_departments);
+// dump($this->staff_departments);
+		// $this->staff_archives = \StringUtil::deserialize($this->staff_archives);
 
 		// Return if there are no archives
 		if (empty($this->staff_archives) || !\is_array($this->staff_archives))
@@ -56,20 +48,63 @@ class ModuleStaffList extends \Module
 	 */
 	protected function compile()
 	{
-// dump($this->staff_archives);
-		$objEmployees = StaffEmployeeModel::findPublishedByPids($this->staff_archives);
 
 
+		// Determine sorting
+		$t = StaffEmployeeModel::getTable();
+		$order = '';
+
+		switch ($this->staff_order)
+		{
+			case 'order_sorting_asc':
+				$order .= "$t.sorting";
+				break;
+
+			case 'order_sorting_desc':
+				$order .= "$t.sorting DESC";
+				break;
+
+			case 'order_surname_asc':
+				$order .= "$t.surname";
+				break;
+
+			case 'order_surname_desc':
+				$order .= "$t.surname DESC";
+				break;
+				
+			case 'order_entrydate_asc':
+				$order .= "$t.entryDate";
+				break;
+				
+			case 'order_entrydate_desc':
+				$order .= "$t.entryDate DESC";
+				break;
+
+			case 'order_random':
+				$order .= "RAND()";
+				break;
+
+			default:
+				$order .= "$t.sorting ASC";
+		}
+
+		// $objEmployees = StaffEmployeeModel::findPublishedByPids($this->staff_archives,array('order'=>$order,'departments'=>$this->staff_departments));
+		$objEmployees = StaffEmployeeModel::findPublishedByPids($this->staff_archives,array('order'=>$order));
+
+
+		
 
 		if ($objEmployees !== null)
 		{
-			$objStaff = new Staff();
-			$objStaff->staff_template = $this->staff_template;
-			$objStaff->imgSize = $this->imgSize;
-			$objStaff->jumpTo = $this->jumpTo;
-			$this->Template->description = $this->description;
-			$this->Template->employees = $objStaff->parseEmployees($objEmployees);
+			// dump($this->staff_departments);
+			$this->Template->description = $this->staff_description;
+			$this->Template->employees = $this->parseEmployees($objEmployees,$this->staff_departments);
 		}
 
 	}
+
+
+
+
+
 }

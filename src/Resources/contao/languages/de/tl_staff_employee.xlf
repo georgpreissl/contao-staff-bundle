@@ -1,0 +1,62 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_staff_employee.php" source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_staff_employee.department_legend">
+                <source>Departments</source>
+                <target>Abteilungen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.expert_legend">
+                <source>Expert settings</source>
+                <target>Experteneinstellungen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.new.0">
+                <source>New department</source>
+                <target>Neue Abteilung</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.new.1">
+                <source>Add a new department</source>
+                <target>Eine neue Abteilung anlegen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.edit.0">
+                <source>Edit department</source>
+                <target>Abteilung bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.edit.1">
+                <source>Edit department ID %s</source>
+                <target>Abteilung ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.delete.0">
+                <source>Delete department</source>
+                <target>Abteilung löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.delete.1">
+                <source>Delete department ID %s</source>
+                <target>Abteilung ID %s löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.show.0">
+                <source>Department details</source>
+                <target>Details der Abteilung</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.show.1">
+                <source>Details of the department ID %s</source>
+                <target>Details der Abteilung ID %s anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.departments.0">
+                <source>Department</source>
+                <target>Abteilung</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.departments.1">
+                <source>Choose the department</source>
+                <target>Wählen Sie die Abteilungen aus</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.invisible.0">
+                <source>Invisible</source>
+                <target>Unsichtbar</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.invisible.1">
+                <source>Hide the department on the website</source>
+                <target>Die Abteilung auf der Webseite nicht anzeigen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

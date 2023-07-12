@@ -11,7 +11,7 @@ class ElementStaff extends \ContentElement
 
 	public function generate()
 	{
-        $objEmployee = StaffEmployeeModel::findPublishedByPids(array($this->staff_employee));
+        $objEmployee = StaffEmployeeModel::findByPk($this->staff_employee);
 
 		if ($objEmployee !== null)
 		{
@@ -30,8 +30,8 @@ class ElementStaff extends \ContentElement
     {
 		if ($this->employee)
 		{
-            $objStaff = new Staff();
-            $objStaff->staff_template = $this->staff_template ? :'staff_simple';
+            $objStaff = new ModuleStaffList($this->employee);
+            $objStaff->staff_template = $this->staff_template ? :'staff_short';
             $objStaff->imgSize = $this->size;
             if($this->staff_jumpto){
 

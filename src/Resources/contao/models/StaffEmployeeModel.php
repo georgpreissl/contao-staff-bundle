@@ -47,6 +47,9 @@ class StaffEmployeeModel extends Model
 			$arrColumns[] = "$t.published='1' AND ($t.start='' OR $t.start<=$time) AND ($t.stop='' OR $t.stop>$time)";
 		}
 
+
+
+
 		return static::findOneBy($arrColumns, $varId, $arrOptions);
 	}
 
@@ -100,7 +103,17 @@ class StaffEmployeeModel extends Model
 			$time = \Date::floorToMinute();
 			$arrColumns[] = "$t.published='1' AND ($t.start='' OR $t.start<=$time) AND ($t.stop='' OR $t.stop>$time)";
 		}
+		
+		if(isset($arrOptions['departments']))
+		{
+			// dump('jo');
+			$arrColumns[] = "$t.department in (" . implode(',', $arrOptions['departments']) . ") ";
+		}
 
+		if (!isset($arrOptions['order']))
+		{
+			$arrOptions['order']  = "$t.sorting ASC";
+		}
 
 
 		return static::findBy($arrColumns, null, $arrOptions);

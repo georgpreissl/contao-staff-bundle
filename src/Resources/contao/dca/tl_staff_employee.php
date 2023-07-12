@@ -1,7 +1,7 @@
 <?php
 
 use Contao\DC_Table;
-use GeorgPreissl\Staff\StaffDivisionModel;
+use GeorgPreissl\Staff\StaffArchiveModel;
 
 System::loadLanguageFile('tl_content');
 
@@ -15,7 +15,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 	'config' => array
 	(
 		'dataContainer'               => DC_Table::class,
-		'ptable'                      => 'tl_staff_division',
+		'ptable'                      => 'tl_staff_archive',
 		'enableVersioning'            => true,
 		'sql' => array
 		(
@@ -41,6 +41,13 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'global_operations' => array
 		(
+            'departments' => array
+            (
+                'label' => &$GLOBALS['TL_LANG']['tl_staff_employee']['departments'],
+                'href' => 'table=tl_staff_department',
+                'icon' => 'bundles/georgpreisslstaff/department.svg',
+                'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="c"',
+            ),		
 			'all' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
@@ -94,9 +101,12 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},forename,surname,alias,name_prefix,name_appendix,position;'.
+		'default'                     => '{title_legend},forename,surname,alias,name_prefix,name_appendix,position,departments;'.
 										'{photo_legend},singleSRC;'.
-										'{data_legend},infos,phone,mobile,email,year_of_birth;'.
+										'{description_legend},headline,description;'.
+										'{data_legend},entryDate,phone,mobile,email,birthday;'.
+										'{quote_legend:hide},quote;'.
+										'{expert_legend:hide},cssClass;'.
 										'{publish_legend},published,start,stop;'
 	),
 
@@ -109,7 +119,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'pid' => array
 		(
-			'foreignKey'              => 'tl_staff_division.title',
+			'foreignKey'              => 'tl_staff_archive.title',
 			'sql'                     => "int(10) unsigned NOT NULL default 0"
 		),		
 		'sorting' => array
@@ -126,13 +136,13 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'alias', 'doNotCopy'=>true, 'unique'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'eval'                    => array('rgxp'=>'alias', 'doNotCopy'=>true, 'unique'=>true, 'maxlength'=>255, 'tl_class'=>'w50 clr'),
 			'save_callback' => array
 			(
 				array('tl_staff_employee', 'generateAlias')
 			),
 			'sql'                     => "varchar(255) BINARY NOT NULL default ''"
-		),		
+		),
 		'forename' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['forename'],
@@ -146,6 +156,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['surname'],
 			'exclude'                 => true,
+			'search'                  => true,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
@@ -155,8 +166,8 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['name_prefix'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(8) NOT NULL default ''"
+			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50 clr'),
+			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
 		'name_appendix' => array
 		(
@@ -164,7 +175,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(8) NOT NULL default ''"
+			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
 		'position' => array
 		(
@@ -174,6 +185,33 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
+        'departments' => array
+        (
+            'exclude' => true,
+            'sorting' => false,
+            'filter' => true,
+            'flag' => 1,
+            'search' => true,
+            'sql' => 'blob NULL',
+            'foreignKey' => 'tl_staff_department.title',
+            'inputType' => 'select',
+            'eval' => array(
+                'includeBlankOption' => true,
+                'multiple' => true,
+				'chosen'=>true,
+				'tl_class'=>'w50'
+            )
+        ),	
+		'entryDate' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['entryDate'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "int(10) unsigned"
+		),		
 		'singleSRC' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['singleSRC'],
@@ -182,13 +220,31 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>'%contao.image.valid_extensions%'),
 			'sql'                     => "binary(16) NULL"
 		),
-		'infos' => array
+		'headline' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['infos'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['headline'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>''),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),		
+		'description' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['description'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'textarea',
 			'eval'                    => array('rte'=>'tinyMCE'),
+			'sql'                     => "text NULL"
+		),
+		'quote' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['quote'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('allowHtml'=>true),
 			'sql'                     => "text NULL"
 		),
 		'phone' => array
@@ -218,14 +274,22 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			'eval'                    => array('maxlength'=>255, 'rgxp'=>'email', 'unique'=>true, 'decodeEntities'=>true, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),		
-		'year_of_birth' => array
+		'birthday' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['year_of_birth'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['birthday'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(128) NOT NULL default ''"
+			'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "int(10) unsigned"		
 		),
+		'cssClass' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['cssClass'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),		
 		'published' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['published'],
@@ -433,7 +497,7 @@ class tl_staff_employee extends Backend
 		// Generate alias if there is none
 		if (!$varValue)
 		{
-			$varValue = System::getContainer()->get('contao.slug')->generate($dc->activeRecord->forename . ' ' . $dc->activeRecord->surname, StaffDivisionModel::findByPk($dc->activeRecord->pid)->jumpTo, $aliasExists);
+			$varValue = System::getContainer()->get('contao.slug')->generate($dc->activeRecord->forename . ' ' . $dc->activeRecord->surname, StaffArchiveModel::findByPk($dc->activeRecord->pid)->jumpTo, $aliasExists);
 		}
 		elseif (preg_match('/^[1-9]\d*$/', $varValue))
 		{

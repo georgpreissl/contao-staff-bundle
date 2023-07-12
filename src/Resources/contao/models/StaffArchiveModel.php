@@ -5,18 +5,18 @@ namespace GeorgPreissl\Staff;
 use Model;
 
 /**
- * Class StaffDivisionModel
+ * Class StaffArchiveModel
  *
  * Reads and writes divisions.
  */
-class StaffDivisionModel extends Model
+class StaffArchiveModel extends Model
 {
 
     /**
      * Table name
      * @var string
      */
-    protected static $strTable = 'tl_staff_division';
+    protected static $strTable = 'tl_staff_archive';
 
 
 
