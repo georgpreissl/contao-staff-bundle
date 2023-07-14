@@ -14,7 +14,8 @@ $GLOBALS['TL_LANG']['FMD']['staffreader'] = array('Mitarbeiterleser', 'Stellt ei
 
 
 $GLOBALS['TL_LANG']['tl_module']['staff_archives'] = array('Archive', 'Bitte wählen Sie eine oder mehrere Archive aus.');
-$GLOBALS['TL_LANG']['tl_module']['staff_departments'] = array('Abteilungen', 'Hier können Sie eine oder mehrere Abteilungen auswählen. Wählen Sie keine aus um alle anzuzeigen.');
+$GLOBALS['TL_LANG']['tl_module']['staffFilterDepartments'] = array('Nach Abteilungen filtern', 'Die Liste nach Abteilungen filtern');
+$GLOBALS['TL_LANG']['tl_module']['staff_departments'] = array('Abteilungen', 'Bitte wählen Sie eine oder mehrere Abteilungen aus');
 $GLOBALS['TL_LANG']['tl_module']['staff_template'] = array('Mitarbeiter-Template', 'Hier können Sie ein Mitarbeiter-Template auswählen.');
 $GLOBALS['TL_LANG']['tl_module']['staff_description'] = array('Beschreibung der Liste', 'Hier können Sie eine Beschreibung der Mitarbeiterliste eingeben.');
 $GLOBALS['TL_LANG']['tl_module']['staff_order'] = array('Sortierreihenfolge', 'Hier können Sie die Sortierreihenfolge festlegen.');

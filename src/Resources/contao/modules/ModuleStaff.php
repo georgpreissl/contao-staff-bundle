@@ -12,7 +12,7 @@ abstract class ModuleStaff extends \Module
 
 	protected function sortOutProtected($arrArchives)
 	{
-		if (empty($arrArchives) || !\is_array($arrArchives))
+		if (empty($arrArchives) || !is_array($arrArchives))
 		{
 			return $arrArchives;
 		}
@@ -38,19 +38,28 @@ abstract class ModuleStaff extends \Module
 	}
 
 
-	public function parseEmployees($objEmployees,$arrDepartmentsSetting)
+	public function parseEmployees($objEmployees)
 	{
 		$arrEmployees = array();
 
+		if($this->staffFilterDepartments)
+		{
+			$arrDepartmentsSetting = \StringUtil::deserialize($this->staff_departments) ? : array();
+		}
+
 		foreach ($objEmployees as $objEmployee)
 		{
-			$arrDepartments = \StringUtil::deserialize($objEmployee->departments);
-			$hasIntersection = false;
-			if(is_array($arrDepartments))
+			$booAddEmployee = true;
+			if($this->staffFilterDepartments)
 			{
-				$hasIntersection = array_intersect($arrDepartments, $arrDepartmentsSetting);
+				$arrDepartments = \StringUtil::deserialize($objEmployee->departments) ? : array();
+
+				if(!array_intersect($arrDepartments, $arrDepartmentsSetting))
+				{
+					$booAddEmployee = false;
+				};
 			}
-			if($hasIntersection)
+			if($booAddEmployee)
 			{
 				$arrEmployees[] = $this->parseEmployee($objEmployee);
 			}

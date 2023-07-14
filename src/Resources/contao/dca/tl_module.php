@@ -1,9 +1,12 @@
 <?php
 
 // Add palettes to tl_module
-
+$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'staffFilterDepartments';
+// dump($GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__']);
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['staffFilterDepartments'] = 'staff_departments';
+// dump($GLOBALS['TL_DCA']['tl_module']['subpalettes']);
 $GLOBALS['TL_DCA']['tl_module']['palettes']['stafflist'] = '{title_legend},name,headline,type;'.
-															'{config_legend},staff_archives,staff_departments,staff_description,staff_order;'.
+															'{config_legend},staff_archives,staffFilterDepartments,staff_order,staff_description;'.
 															'{redirect_legend},jumpTo;'.
 															'{protected_legend:hide},protected;'.
 															'{template_legend:hide},staff_template,customTpl;'.
@@ -31,7 +34,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['staff_archives'] = array
 	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
-
+$GLOBALS['TL_DCA']['tl_module']['fields']['staffFilterDepartments'] = array
+(
+	'exclude'                 => true,
+	'inputType'               => 'checkbox',
+	'eval'                    => array('submitOnChange'=>true),
+	'sql'                     => "char(1) NOT NULL default ''"
+);
 $GLOBALS['TL_DCA']['tl_module']['fields']['staff_departments'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['staff_departments'],

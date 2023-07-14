@@ -28,8 +28,9 @@ class ModuleStaffList extends ModuleStaff
 		}
 		// $objStaff = new Staff();
 		$this->staff_archives = $this->sortOutProtected(\StringUtil::deserialize($this->staff_archives));
-		$this->staff_departments = \StringUtil::deserialize($this->staff_departments);
-// dump($this->staff_departments);
+		// dump($this->staffFilterDepartments);
+		// $this->staff_departments = \StringUtil::deserialize($this->staff_departments);
+
 		// $this->staff_archives = \StringUtil::deserialize($this->staff_archives);
 
 		// Return if there are no archives
@@ -98,7 +99,7 @@ class ModuleStaffList extends ModuleStaff
 		{
 			// dump($this->staff_departments);
 			$this->Template->description = $this->staff_description;
-			$this->Template->employees = $this->parseEmployees($objEmployees,$this->staff_departments);
+			$this->Template->employees = $this->parseEmployees($objEmployees);
 		}
 
 	}
