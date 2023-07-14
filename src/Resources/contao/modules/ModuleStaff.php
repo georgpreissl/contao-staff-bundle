@@ -86,16 +86,16 @@ abstract class ModuleStaff extends \Module
 			// dump($objEmployee->departments);
 			$arrDepartments = \StringUtil::deserialize($objEmployee->departments);
 			$objDepartments = StaffDepartmentModel::findMultipleByIds($arrDepartments);
-			$arrDepReturn = array();
+			$arrDepartmentsTitles = array();
 			if ($objDepartments !== null)
 			{
 				foreach($objDepartments as $objDepartment)
 				{
-					$arrDepReturn[] = $objDepartment->title;
+					$arrDepartmentsTitles[] = $objDepartment->title;
 				}
 			}
 			// dump($objDepartments);
-			$objTemplate->department = $arrDepReturn;
+			$objTemplate->department = $arrDepartmentsTitles;
 		}
 
 		if(isset($this->jumpTo) && $this->jumpTo ==! 0)

@@ -1,4 +1,4 @@
 Contao Staff Bundle
 =============
 
-Represent employees by departments in Contao CMS.
+Mit dieser Erweiterung können im Backend Personen (zb. Mitarbeiter) verwaltet und via verschiedener Frontend-Module ausgegeben werden.
