@@ -101,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'default'                     => '{title_legend},forename,surname,alias,name_prefix,name_appendix,position,departments;'.
+		'default'                     => '{title_legend},forename,surname,alias,namePrefix,nameAppendix,position,departments;'.
 										'{photo_legend},singleSRC;'.
 										'{description_legend},headline,description;'.
 										'{data_legend},entryDate,phone,mobile,email,birthday;'.
@@ -130,9 +130,24 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
+		'forename' => array
+		(
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(128) NOT NULL default ''"
+		),
+		'surname' => array
+		(
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(128) NOT NULL default ''"
+		),
 		'alias' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['alias'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -143,35 +158,15 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 			),
 			'sql'                     => "varchar(255) BINARY NOT NULL default ''"
 		),
-		'forename' => array
+		'namePrefix' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['forename'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(128) NOT NULL default ''"
-		),
-		'surname' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['surname'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(128) NOT NULL default ''"
-		),
-		'name_prefix' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['name_prefix'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50 clr'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
-		'name_appendix' => array
+		'nameAppendix' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['name_appendix'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
@@ -179,7 +174,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'position' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['position'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>128, 'tl_class'=>'w50'),
@@ -204,7 +198,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
         ),	
 		'entryDate' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['entryDate'],
 			'exclude'                 => true,
 			'filter'                  => true,
 			'sorting'                 => true,
@@ -214,7 +207,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),		
 		'singleSRC' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['singleSRC'],
 			'exclude'                 => true,
 			'inputType'               => 'fileTree',
 			'eval'                    => array('fieldType'=>'radio', 'filesOnly'=>true, 'extensions'=>'%contao.image.valid_extensions%'),
@@ -222,7 +214,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'headline' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['headline'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -231,7 +222,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),		
 		'description' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['description'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'textarea',
@@ -240,7 +230,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'quote' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['quote'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'textarea',
@@ -249,7 +238,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'phone' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['phone'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -258,7 +246,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'mobile' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['mobile'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -267,7 +254,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'email' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['email'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -276,7 +262,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),		
 		'birthday' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['birthday'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
@@ -284,7 +269,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'cssClass' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['cssClass'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('tl_class'=>'w50'),
@@ -292,7 +276,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),		
 		'published' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['published'],
 			'exclude'                 => true,
 			'toggle'                  => true,
 			'filter'                  => true,
@@ -303,7 +286,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'start' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_employee']['start'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
@@ -311,7 +293,6 @@ $GLOBALS['TL_DCA']['tl_staff_employee'] = array
 		),
 		'stop' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_content']['stop'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),

@@ -94,7 +94,6 @@ abstract class ModuleStaff extends \Module
 					$arrDepartmentsTitles[] = $objDepartment->title;
 				}
 			}
-			// dump($objDepartments);
 			$objTemplate->department = $arrDepartmentsTitles;
 		}
 

@@ -50,32 +50,27 @@ $GLOBALS['TL_DCA']['tl_staff_archive'] = array
 		(
 			'edit' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['edit'],
 				'href'                => 'table=tl_staff_employee',
 				'icon'                => 'edit.gif'
 			),
 			'editheader' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['editheader'],
 				'href'                => 'act=edit',
 				'icon'                => 'header.gif'
 			),
 			'copy' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['copy'],
 				'href'                => 'act=copy',
 				'icon'                => 'copy.gif'
 			),
 			'delete' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.gif',
 				'attributes'          => 'onclick="if(!confirm(\'' . ($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null) . '\'))return false;Backend.getScrollOffset()"'
 			),
 			'show' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_staff_archive']['show'],
 				'href'                => 'act=show',
 				'icon'                => 'show.gif'
 			)
@@ -110,7 +105,6 @@ $GLOBALS['TL_DCA']['tl_staff_archive'] = array
 		),
 		'title' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_archive']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
@@ -119,7 +113,6 @@ $GLOBALS['TL_DCA']['tl_staff_archive'] = array
 		),
 		'protected' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_staff_archive']['protected'],
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'checkbox',

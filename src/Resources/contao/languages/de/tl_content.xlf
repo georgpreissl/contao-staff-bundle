@@ -1,0 +1,39 @@
+<?xml version="1.0" ?><xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/tl_content.php" source-language="en" target-language="de">
+	<body>
+		<trans-unit id="tl_content.staff_employee.0">
+			<source>Person</source>
+			<target>Person</target>
+		</trans-unit>
+		<trans-unit id="tl_content.staff_employee.1">
+			<source>Please select a person</source>
+			<target>Bitte wählen Sie eine Person aus</target>
+		</trans-unit>
+		<trans-unit id="tl_content.staff_jumpto.0">
+			<source>Details page</source>
+			<target>Weiterleitungsseite</target>
+		</trans-unit>
+		<trans-unit id="tl_content.staff_jumpto.1">
+			<source>Here you can select a page with details about the person</source>
+			<target>Hier können Sie eine Seite mit Details zur Person auswählen</target>
+		</trans-unit>
+		<trans-unit id="tl_content.employee_legend">
+			<source>Person</source>
+			<target>Person</target>
+		</trans-unit>
+		<trans-unit id="tl_content.page_legend">
+			<source>Details</source>
+			<target>Weiterleitung</target>
+		</trans-unit>
+		<trans-unit id="CTE.staff.0">
+			<source>Person</source>
+			<target>Person</target>
+		</trans-unit>
+		<trans-unit id="CTE.staff.1">
+			<source>Content element person</source>
+			<target>Inhaltselement Person</target>
+		</trans-unit>
+	</body>
+	</file>
+</xliff>
+

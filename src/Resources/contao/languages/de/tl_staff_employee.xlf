@@ -1,61 +1,254 @@
 <?xml version="1.0" ?><xliff version="1.1">
     <file datatype="php" original="src/Resources/contao/languages/en/tl_staff_employee.php" source-language="en" target-language="de">
         <body>
+            <trans-unit id="tl_staff_employee.forename.0">
+                <source>First Name</source>
+                <target>Vorname</target>
+            </trans-unit>        
+            <trans-unit id="tl_staff_employee.forename.1">
+                <source>Please enter the first Name.</source>
+                <target>Bitte geben Sie den Vornamen ein.</target>
+            </trans-unit>        
+            <trans-unit id="tl_staff_employee.surname.0">
+                <source>Last Name</source>
+                <target>Nachname</target>
+            </trans-unit>        
+            <trans-unit id="tl_staff_employee.surname.1">
+                <source>Please enter the last Name.</source>
+                <target>Bitte geben Sie den Nachnamen ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.alias.0">
+                <source>Person alias</source>
+                <target>Personenalias</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.alias.1">
+                <source>The person alias is a unique reference to the person which can be called instead of its numeric ID.</source>
+                <target>Der Personenalias ist eine eindeutige Referenz, die anstelle der numerischen Personen-ID aufgerufen werden kann.</target>
+            </trans-unit>
+			<trans-unit id="tl_staff_employee.namePrefix.0">
+				<source>Name prefix</source>
+				<target>Name Prefix</target>
+			</trans-unit>
+			<trans-unit id="tl_staff_employee.namePrefix.1">
+				<source>Hier können Sie einen Namenszusatz einfügen der vor dem Namen der Person platziert wird.</source>
+				<target>Hier können Sie einen Namenszusatz einfügen der vor dem Namen der Person platziert wird.</target>
+			</trans-unit>
+			<trans-unit id="tl_staff_employee.nameAppendix.0">
+				<source>Name appendix</source>
+				<target>Name Appendix</target>
+			</trans-unit>
+			<trans-unit id="tl_staff_employee.nameAppendix.1">
+				<source>Hier können Sie einen Namenszusatz einfügen der nach dem Namen der Person platziert wird.</source>
+				<target>Hier können Sie einen Namenszusatz einfügen der nach dem Namen der Person platziert wird.</target>
+			</trans-unit>
+			<trans-unit id="tl_staff_employee.position.0">
+				<source>Position</source>
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="tl_staff_employee.position.1">
+				<source>Hier können Sie die Funktion der Person einfügen</source>
+				<target>Hier können Sie die Funktion der Person einfügen</target>
+			</trans-unit>
+            <trans-unit id="tl_staff_employee.departments.0">
+                <source>Department</source>
+                <target>Abteilungen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.departments.1">
+                <source>Choose the department</source>
+                <target>Wählen Sie die Abteilungen aus in denen die Person tätig ist</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.entryDate.0">
+                <source>Entry date</source>
+                <target>Eintrittsdatum</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.entryDate.1">
+                <source>Hier könen Sie das Eintrittsdaum der Person eingeben.</source>
+                <target>Hier könen Sie das Eintrittsdaum der Person eingeben.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.singleSRC.0">
+                <source>Quelldatei</source>
+                <target>Quelldatei</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.singleSRC.1">
+                <source>Bitte wählen Sie eine Datei aus der Dateiübersicht.</source>
+                <target>Bitte wählen Sie eine Datei aus der Dateiübersicht.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.headline.0">
+                <source>Headline</source>
+                <target>Überschrift</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.headline.1">
+                <source>Hier könen Sie eine Überschrift zum Mitarbeiter eingeben</source>
+                <target>Hier könen Sie eine Überschrift zum Mitarbeiter eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.description.0">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.description.1">
+                <source>Hier könen Sie eine Beschreibung zur Person eingeben</source>
+                <target>Hier könen Sie eine Beschreibung zur Person eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.quote.0">
+                <source>quote</source>
+                <target>Zitat</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.quote.1">
+                <source>Hier könen Sie ein Zitat der Person eingeben</source>
+                <target>Hier könen Sie ein Zitat der Person eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.phone.0">
+                <source>phone</source>
+                <target>Telefonnummer</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.phone.1">
+                <source>Hier könen Sie die Telefonnummer der Person eingeben</source>
+                <target>Hier könen Sie die Telefonnummer der Person eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.mobile.0">
+                <source>mobile</source>
+                <target>Mobile Telefonnummer</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.mobile.1">
+                <source>Hier könen Sie die mobile Telefonnummer der Person eingeben</source>
+                <target>Hier könen Sie die mobile Telefonnummer der Person eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.email.0">
+                <source>Email</source>
+                <target>E-Mail-Adresse</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.email.1">
+                <source>Hier könen Sie die E-Mail-Adresse der Person eingeben</source>
+                <target>Hier könen Sie die E-Mail-Adresse der Person eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.birthday.0">
+                <source>birthday</source>
+                <target>Geburtsdatum</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.birthday.1">
+                <source>Hier können Sie das Geburtsdatum der Person eingeben.</source>
+                <target>Hier können Sie das Geburtsdatum der Person eingeben.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.cssClass.0">
+                <source>CSS Class</source>
+                <target>CSS-Klasse</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.cssClass.1">
+                <source>Hier können Sie eine oder mehrere Klassen eingeben</source>
+                <target>Hier können Sie eine oder mehrere Klassen eingeben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.published.0">
+                <source>Person veröffentlichen</source>
+                <target>Person veröffentlichen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.published.1">
+                <source>Die Person auf der Website anzeigen</source>
+                <target>Die Person auf der Website anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.start.0">
+                <source>Anzeigen ab</source>
+                <target>Anzeigen ab</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.start.1">
+                <source>Wenn Sie die Person erst ab einem bestimmten Zeitpunkt auf der Webseite anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das Feld leer.</source>
+                <target>Wenn Sie die Person erst ab einem bestimmten Zeitpunkt auf der Webseite anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das Feld leer.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.stop.0">
+                <source>Anzeigen bis</source>
+                <target>Anzeigen bis</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.stop.1">
+                <source>Wenn Sie die Person nur bis zu einem bestimmten Zeitpunkt auf der Webseite anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das Feld leer.</source>
+                <target>Wenn Sie die Person nur bis zu einem bestimmten Zeitpunkt auf der Webseite anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das Feld leer.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_staff_employee.title_legend">
+                <source>Name and position</source>
+                <target>Name und Funktion</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.photo_legend">
+                <source>Image</source>
+                <target>Bildeinstellungen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.description_legend">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.data_legend">
+                <source>Data</source>
+                <target>Daten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.quote_legend">
+                <source>Quote</source>
+                <target>Zitat</target>
+            </trans-unit>
             <trans-unit id="tl_staff_employee.department_legend">
                 <source>Departments</source>
-                <target>Abteilungen</target>
+                <target>Abteilungenen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.publish_legend">
+                <source>Publish</source>
+                <target>Veröffentlichung</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.expert_legend">
                 <source>Expert settings</source>
                 <target>Experteneinstellungen</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.new.0">
-                <source>New department</source>
-                <target>Neue Abteilung</target>
+                <source>New person</source>
+                <target>Neue Person</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.new.1">
-                <source>Add a new department</source>
-                <target>Eine neue Abteilung anlegen</target>
+                <source>Add a new person</source>
+                <target>Eine neue Person anlegen</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.edit.0">
-                <source>Edit department</source>
-                <target>Abteilung bearbeiten</target>
+                <source>Edit person</source>
+                <target>Person bearbeiten</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.edit.1">
-                <source>Edit department ID %s</source>
-                <target>Abteilung ID %s bearbeiten</target>
+                <source>Edit person ID %s</source>
+                <target>Person ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.copy.0">
+                <source>Copy person</source>
+                <target>Person kopieren</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.copy.1">
+                <source>Copy person ID %s</source>
+                <target>Person ID %s kopieren</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.cut.0">
+                <source>move person</source>
+                <target>Person verschieben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_employee.cut.1">
+                <source>move person ID %s</source>
+                <target>Person ID %s verschieben</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.delete.0">
-                <source>Delete department</source>
-                <target>Abteilung löschen</target>
+                <source>Delete person</source>
+                <target>Person löschen</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.delete.1">
-                <source>Delete department ID %s</source>
-                <target>Abteilung ID %s löschen</target>
+                <source>Delete person ID %s</source>
+                <target>Person ID %s löschen</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.show.0">
-                <source>Department details</source>
-                <target>Details der Abteilung</target>
+                <source>Person details</source>
+                <target>Details der Person</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.show.1">
-                <source>Details of the department ID %s</source>
-                <target>Details der Abteilung ID %s anzeigen</target>
-            </trans-unit>
-            <trans-unit id="tl_staff_employee.departments.0">
-                <source>Department</source>
-                <target>Abteilung</target>
-            </trans-unit>
-            <trans-unit id="tl_staff_employee.departments.1">
-                <source>Choose the department</source>
-                <target>Wählen Sie die Abteilungen aus</target>
+                <source>Details of the person ID %s</source>
+                <target>Details der Person ID %s anzeigen</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.invisible.0">
                 <source>Invisible</source>
                 <target>Unsichtbar</target>
             </trans-unit>
             <trans-unit id="tl_staff_employee.invisible.1">
-                <source>Hide the department on the website</source>
-                <target>Die Abteilung auf der Webseite nicht anzeigen</target>
+                <source>Hide the person on the website</source>
+                <target>Die Person auf der Webseite nicht anzeigen</target>
             </trans-unit>
         </body>
     </file>

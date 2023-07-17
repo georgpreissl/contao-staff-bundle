@@ -1,0 +1,102 @@
+<?xml version="1.0" ?><xliff version="1.1">
+    <file datatype="php" original="src/Resources/contao/languages/en/tl_staff_archive.php" source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_staff_archive.title.0">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.title.1">
+                <source>Bitte fügen Sie den Titel des Archivs ein.</source>
+                <target>Bitte fügen Sie den Titel des Archivs ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.memberGroups.0">
+                <source>Allowed member groups</source>
+                <target>Erlaubte Mitgliedergruppen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.memberGroups.1">
+                <source>Personen nur bestimmten Mitgliedergruppen anzeigen.</source>
+                <target>Personen nur bestimmten Mitgliedergruppen anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.protected.0">
+                <source>protect archive</source>
+                <target>Archiv schützen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.protected.1">
+                <source>Diese Mitgliedergruppen können die Personen des Archivs sehen.</source>
+                <target>Diese Mitgliedergruppen können die Personen des Archivs sehen.</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.title_legend">
+                <source>Title and description</source>
+                <target>Titel und Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.protected_legend">
+                <source>Protection</source>
+                <target>Zugriffsschutz</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.new.0">
+                <source>New archive</source>
+                <target>Neues Archiv</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.new.1">
+                <source>Add a new archive</source>
+                <target>Eine neues Archiv anlegen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.edit.0">
+                <source>Edit Archiv</source>
+                <target>Archiv bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.edit.1">
+                <source>Edit Archiv ID %s</source>
+                <target>Archiv ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.editheader.0">
+                <source>Settings of the archive</source>
+                <target>Einstellungen des Archivs</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.editheader.1">
+                <source>Edit settings of archive ID %s</source>
+                <target>Einstellungen des Archivs ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.copy.0">
+                <source>Copy Archiv</source>
+                <target>Archiv kopieren</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.copy.1">
+                <source>Copy Archiv ID %s</source>
+                <target>Archiv ID %s kopieren</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.cut.0">
+                <source>move Archiv</source>
+                <target>Archiv verschieben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.cut.1">
+                <source>move Archiv ID %s</source>
+                <target>Archiv ID %s verschieben</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.delete.0">
+                <source>Delete Archiv</source>
+                <target>Archiv löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.delete.1">
+                <source>Delete Archiv ID %s</source>
+                <target>Archiv ID %s löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.show.0">
+                <source>Archiv details</source>
+                <target>Details der Archiv</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.show.1">
+                <source>Details of the Archiv ID %s</source>
+                <target>Details der Archiv ID %s anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.invisible.0">
+                <source>Invisible</source>
+                <target>Unsichtbar</target>
+            </trans-unit>
+            <trans-unit id="tl_staff_archive.invisible.1">
+                <source>Hide the Archiv on the website</source>
+                <target>Die Archiv auf der Webseite nicht anzeigen</target>
+            </trans-unit>            
+        </body>
+    </file>
+</xliff>
